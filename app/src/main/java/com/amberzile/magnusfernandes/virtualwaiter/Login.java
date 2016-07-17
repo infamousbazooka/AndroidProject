@@ -1,5 +1,6 @@
 package com.amberzile.magnusfernandes.virtualwaiter;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private final String TOOLBAR_TITLE = "Login";
     private EditText inputName, inputPassword;
     private TextInputLayout inputLayoutName, inputLayoutPassword;
     private Button btnSignIn;
@@ -26,6 +27,7 @@ public class Login extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(TOOLBAR_TITLE);
 
         inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
         inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
@@ -53,7 +55,8 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Thank You!", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(Login.this, Settings.class);
+        startActivity(i);
     }
 
     private boolean validateName() {
